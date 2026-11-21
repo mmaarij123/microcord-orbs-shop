@@ -1,31 +1,44 @@
 # Orbs Shop for Microcord
 
-Orbs Shop is an Android plugin for browsing and redeeming Discord cosmetics with Orbs. Open it using the Shop icon in the **User Settings** header, or select **Open Orbs Shop** in the plugin settings.
+An Orbs-only Discord cosmetics shop for Microcord on Android.
 
-- Browse the Orbs tab and the main Discord catalog in one shop. Cosmetics with a cash price are eligible when Discord also offers an Orbs price.
-- Filter Avatar Decorations, Profile Effects, Profile Frames, and Nameplates. Search by name or colour.
-- Preview each available colour with your Discord avatar. A profile-effect preview shows the full profile card with the selected animation. Use **Replay** to restart the animation.
-- The catalog stays fresh for 15 minutes and is saved locally so it can load on restart. Tap **Refresh** to check for recent changes. Each redemption checks the current price, balance, and collection with Discord.
+## What you can do
+
+- See your Orbs balance and browse items from the Orbs Shop and the main Discord Shop. Items with a cash price appear when they also have an Orbs price.
+- Search by name or colour, or filter by Avatar Decorations, Profile Effects, Profile Frames, and Nameplates.
+- Preview each available colour on your Discord profile. Profile effects play over the full profile card. With animations enabled, tap **Replay** to watch the effect again.
+- Tap **Redeem** to review the cost and confirm with Orbs. Before each redemption, the shop checks the current price, your balance, and whether you already own the item.
+- If you’ve opened the shop before, it can load the saved catalog. Tap **Refresh** to check for new items.
 
 ## Install
 
-1. Download the debug APK from [GitHub Releases](https://github.com/mmaarij123/microcord-orbs-shop/releases).
-2. Install the APK on Android alongside Microcord.
-3. Open **Microcord → Settings → Plugins → Orbs Shop**, approve the signer if prompted, and enable the plugin.
-4. Tap the Shop icon in the **User Settings** header.
+1. Install [Microcord](https://github.com/microcord/microcord) on Android and sign in to Discord.
+2. Open the [latest GitHub release](https://github.com/mmaarij123/microcord-orbs-shop/releases/latest). Under **Assets**, download and install the file ending in `-debug.apk`.
+3. In Microcord, go to **Settings → Plugins → Orbs Shop**. Approve the signer if prompted, then enable the plugin.
+4. Tap the Shop icon in the **User Settings** header. You can also select **Open Orbs Shop** in the plugin settings.
 
-If you installed v1.2.0 or earlier, uninstall that plugin APK before installing v1.2.1. Android treats the new package ID as a separate app.
+If you installed v1.2.0 or earlier, uninstall that plugin APK before installing the current release. The Android package changed in v1.2.1.
 
-## Build
+## Build from source
 
-With JDK 21, Android SDK Platform 36.1, and Android Build Tools 36.0.0 installed:
+Orbs Shop is written in Kotlin and built with Gradle against Microcord Plugin API 1.0.6. The plugin uses Microcord's signed-in Discord session for the catalog and redemption. It saves the catalog locally and treats it as fresh for 15 minutes.
+
+Install JDK 21, Android SDK Platform 36.1, and Android Build Tools 36.0.0. Clone this repository and run the following from its root.
 
 ```sh
 ./gradlew testDebugUnitTest assembleDebug
 ```
 
-On Windows, use `gradlew.bat`. The APK is written to `build/outputs/apk/debug/`. The plugin uses Microcord Plugin API 1.0.6. Live catalog and redemption require a Discord account signed into Microcord.
+Use the Windows wrapper in PowerShell.
+
+```powershell
+.\gradlew.bat testDebugUnitTest assembleDebug
+```
+
+The debug APK is written to `build/outputs/apk/debug/OrbsShop-debug.apk`.
 
 ## License and credits
 
-Original plugin code is available under the [MIT License](LICENSE). The [Microcord plugin template](https://github.com/microcord/plugin-template) provided the starting project structure. The Shop and Orbs icons under `artwork/` and their Android vector equivalents are Discord artwork. The Gradle wrapper is available under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Third-party assets and dependencies retain their original terms.
+Original plugin code is available under the [MIT License](LICENSE). The [Microcord plugin template](https://github.com/microcord/plugin-template) provided the starting project structure.
+
+The Shop and Orbs icons under `artwork/` and their Android vector equivalents are Discord artwork. The Gradle wrapper is available under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Third-party assets and dependencies retain their original terms.
