@@ -1,4 +1,4 @@
-package dev.mantikafasi.manticord.orbsshop
+package io.github.mmaarij123.orbsshop
 
 import android.util.AtomicFile
 import com.google.gson.Gson

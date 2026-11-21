@@ -1,4 +1,4 @@
-package dev.mantikafasi.manticord.orbsshop
+package io.github.mmaarij123.orbsshop
 
 import androidx.appcompat.app.AlertDialog
 import android.app.Dialog

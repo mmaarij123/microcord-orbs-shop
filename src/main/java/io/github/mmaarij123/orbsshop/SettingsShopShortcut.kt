@@ -1,4 +1,4 @@
-package dev.mantikafasi.manticord.orbsshop
+package io.github.mmaarij123.orbsshop
 
 import android.app.Activity
 import android.app.Application

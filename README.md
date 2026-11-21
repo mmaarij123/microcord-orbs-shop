@@ -14,6 +14,8 @@ Orbs Shop is an Android plugin for browsing and redeeming Discord cosmetics with
 3. Open **Microcord → Settings → Plugins → Orbs Shop**, approve the signer if prompted, and enable the plugin.
 4. Tap the Shop icon in the **User Settings** header.
 
+If you installed v1.2.0 or earlier, uninstall that plugin APK before installing v1.2.1. Android treats the new package ID as a separate app.
+
 ## Build
 
 With JDK 21, Android SDK Platform 36.1, and Android Build Tools 36.0.0 installed:

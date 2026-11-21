@@ -12,7 +12,7 @@ val releaseSigning = Properties().apply {
 
 manticordPlugin {
     id.set("manticord.orbs_shop")
-    entrypoint.set("dev.mantikafasi.manticord.orbsshop.OrbsShopPlugin")
+    entrypoint.set("io.github.mmaarij123.orbsshop.OrbsShopPlugin")
     description.set("Browse and redeem Discord cosmetics with Orbs")
     manticordVersionMinimum.set(1)
     manticordVersionMaximumExclusive.set(2)
@@ -21,7 +21,7 @@ manticordPlugin {
 }
 
 android {
-    namespace = "dev.mantikafasi.manticord.orbsshop"
+    namespace = "io.github.mmaarij123.orbsshop"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -29,11 +29,11 @@ android {
     }
 
     defaultConfig {
-        applicationId = "dev.mantikafasi.manticord.orbsshop"
+        applicationId = "io.github.mmaarij123.orbsshop"
         minSdk = 23
         targetSdk = 36
-        versionCode = 3
-        versionName = "1.2.0"
+        versionCode = 4
+        versionName = "1.2.1"
     }
 
     signingConfigs {
