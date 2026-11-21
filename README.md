@@ -37,8 +37,8 @@ Use the Windows wrapper in PowerShell.
 
 The debug APK is written to `build/outputs/apk/debug/OrbsShop-debug.apk`.
 
-## License and credits
+## License
 
-Original plugin code is available under the [MIT License](LICENSE). The [Microcord plugin template](https://github.com/microcord/plugin-template) provided the starting project structure.
+The original Orbs Shop plugin code is licensed under MIT. Copyright © 2026 Maarij (mmaarij123). You may use, copy, modify, and redistribute the code, including for commercial use. Include the copyright notice and permission notice with copies or substantial portions of the code. The code is provided as is, without warranty. The full terms include a limitation of liability. [Read the MIT license](LICENSE)
 
-The Shop and Orbs icons under `artwork/` and their Android vector equivalents are Discord artwork. The Gradle wrapper is available under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Third-party assets and dependencies retain their original terms.
+See the notices for the Discord Shop and Orbs icons, catalog artwork, and the upstream build tools. [Third-party notices](THIRD_PARTY_NOTICES.md)
