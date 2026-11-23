@@ -36,7 +36,6 @@ internal class ShopStyle(context: Context) {
     val text = context.themeColour(HostR.attr.colorHeaderPrimary, if (dark) Color.WHITE else 0xFF202127.toInt())
     val muted = context.themeColour(HostR.attr.colorHeaderSecondary, blend(ink, text, 0.68f))
     val panel = blend(ink, text, 0.045f)
-    val inset = blend(ink, text, 0.075f)
     val line = blend(ink, text, 0.17f)
     val accent = context.themeColour(HostR.attr.colorTextLink, if (dark) 0xFF65A8FF.toInt() else 0xFF2147A5.toInt())
     val action = context.themeColour(HostR.attr.color_brand, 0xFF5263DA.toInt()).let { colour ->
