@@ -19,12 +19,20 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
 import com.discord.R as HostR
+import com.discord.stores.StoreStream
 import java.text.NumberFormat
 
 internal class ShopStyle(context: Context) {
-    private val dark = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK !=
-        Configuration.UI_MODE_NIGHT_NO
-    val ink = context.themeColour(HostR.attr.colorBackgroundMobilePrimary, if (dark) 0xFF101114.toInt() else 0xFFF5F5F7.toInt())
+    private val dark = runCatching { StoreStream.getUserSettingsSystem().isDarkTheme() }.getOrElse {
+        context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK !=
+            Configuration.UI_MODE_NIGHT_NO
+    }
+    private val fallback = if (dark) 0xFF101114.toInt() else 0xFFF5F5F7.toInt()
+    val ink = shopSurfaceColor(
+        context.themeColour(HostR.attr.colorBackgroundMobilePrimary, Color.TRANSPARENT),
+        context.themeColour(HostR.attr.colorBackgroundFloating, Color.TRANSPARENT),
+        fallback,
+    )
     val text = context.themeColour(HostR.attr.colorHeaderPrimary, if (dark) Color.WHITE else 0xFF202127.toInt())
     val muted = context.themeColour(HostR.attr.colorHeaderSecondary, blend(ink, text, 0.68f))
     val panel = blend(ink, text, 0.045f)
@@ -64,7 +72,15 @@ private fun Context.themeColour(attr: Int, fallback: Int): Int {
     }
 }
 
-internal fun blend(from: Int, to: Int, amount: Float) = ColorUtils.blendARGB(from, to, amount)
+// Gradient themes can leave the page surface clear so the host wallpaper shows through.
+internal fun shopSurfaceColor(page: Int, floating: Int, fallback: Int): Int = when {
+    page ushr 24 == 255 -> page
+    floating ushr 24 == 255 -> floating
+    else -> fallback
+}
+
+internal fun blend(from: Int, to: Int, amount: Float) =
+    ColorUtils.blendARGB(from, ColorUtils.compositeColors(to, from), amount)
 internal fun Context.dp(value: Int) = (value * resources.displayMetrics.density + 0.5f).toInt()
 
 internal fun Context.shape(fill: Int, radius: Int = 14, stroke: Int? = null) = GradientDrawable().apply {

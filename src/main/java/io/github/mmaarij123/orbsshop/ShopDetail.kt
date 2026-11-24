@@ -71,6 +71,7 @@ internal class ShopDetail(
         }
         dialog.setContentView(ui.column().apply {
             background = ui.shape(style.ink, 24, style.line)
+            clipToOutline = true
             addLine(ui.row().apply {
                 gravity = Gravity.CENTER_VERTICAL
                 setPadding(ui.dp(18), ui.dp(10), ui.dp(8), ui.dp(6))
